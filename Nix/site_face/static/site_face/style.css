@@ -1,0 +1,111 @@
+header{
+  display: inline-block;
+  margin-top: 1%;
+  position: fixed;
+  background-color: rgba(243, 240, 240, .80);
+  border-style: solid hidden solid hidden;
+  border-color: #225500;
+  width: 99%;
+  float: center;
+  overflow: hidden;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 ;
+  overflow: hidden;
+  background: whirgb(243, 240, 240)te;
+  float: left;
+  overflow: hidden;
+}
+li {
+  position: sticky;
+  display: inline-block;
+  float: left;
+  margin: 3px;
+  overflow: hidden;
+  
+}
+
+.logo-link{
+  display: inline-block;
+}
+
+.header-link {
+  margin-top: 5.5%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+}
+.header-search {
+  margin-top: 5%;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  float: right;
+}
+a {
+  display: block;
+  color: rgb(110, 104, 104);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover:not(.hover){
+  background: #225500;
+  color: white ;
+}
+li a.active {
+  background-color: #225500;
+  color: white;
+}
+li input{
+  display: block;
+  text-align:center;
+  float: right;
+  padding: 14px 16;
+  margin: 15px 0;
+}
+.column {
+  border-style: solid;
+  border-color: #225500;
+  text-align: center;
+  height: 500px;
+  float: left;
+  padding: 25px;
+  width: 25%;
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.background-image {
+  background-size: cover;
+  background-position: center center;
+  overflow: hidden;
+}
+
+body {
+  background: url("/static/site_face/images/stockmountains.jpg") 50% 0 no-repeat fixed;
+  width: 100%;
+}
+
+table {
+display: inline-block;
+background-color: rgba(243, 240, 240, .80);
+border-collapse: collapse;
+border-style: solid solid solid solid;
+margin: 0 auto;
+margin-top: 20%; 
+margin-left: 15%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  background-color: rgba(243, 240, 240, 1);
+}

@@ -1,0 +1,34 @@
+
+{% block content %}
+{% load static %}
+
+<html> 
+<link rel='stylesheet' type="text/css" href="{% static 'site_face/style.css' %}">
+
+<body <img class='background-image' src="{% static 'site_face/images/stockmountains.jpg' %}"> 
+<header>
+<div>
+<ul>
+    <li class= "logo-link"><a href="{% url 'home' %}"><img src="{% static 'site_face/images/drawing.svg' %}"></a></li>
+    <li class="header-link"><a href="{% url 'resorts' %}">Resorts</a></li>
+    <li class="header-link"><a href="{% url 'booking' %}">Booking</a></li>
+    <li class="header-link"><a href="{% url 'gear' %}">Gear</a></li>
+    <li class="header-search"><input type="text" placeholder="Search Resorts.." onclick="this.placeholder = ''" onblur="this.placeholder = 'Search Resorts..'"></li>
+
+</ul>
+
+</div>
+</header>
+
+{% for resort in resorts %}
+<table>
+    <tr>
+        <td><a href="{% url 'resort_detail' slug=resort.slug %}">{{ resort.resort_name }}</a></td>
+    </tr>
+</table>
+
+
+{% endfor %}
+
+{% endblock %}
+</body>
