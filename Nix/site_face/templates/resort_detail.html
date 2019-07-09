@@ -1,10 +1,16 @@
-
 {% block content %}
 {% load static %}
+
+<head>
+        <link rel="icon"  href="{%  static 'site_face/favicon/myfavicon.png' %}" type="image/png">
+        <link rel="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js">
+</head>
+
 
 <html> 
 <link rel='stylesheet' type="text/css" href="{% static 'site_face/style.css' %}">
 <body <img class='background-image' src="{% static 'site_face/images/stockmountains.jpg' %}"> 
+
 <header>
 <div>
 <ul>
@@ -17,11 +23,54 @@
 </ul>
 </div>
 </header>
-<table>
-    <td>
-        {% for obj in object.reports_set.all %}{{ obj.bottom_mintemp }}{% endfor %}
-    </td>
-</table>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
+<div><canvas id="myChart" width="500" height="500"></canvas></div>
+<script>
+    var ctx = document.getElementById('myChart');
+    var data = {
+    labels: ["Bottom", "Middle", "Top"],
+    datasets: [
+        {
+            label: "Blue",
+            backgroundColor: 'rgba(51, 117, 179, .8)',
+            data: []
+        },
+        {
+            label: "Red",
+            backgroundColor: "red",
+            data: [4,3,5]
+        },
+    ]
+};
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options : {
+            responsive: false,
+            scales: {
+                Yaxes: [{
+                    ticks: {
+                        min: 0,
+                    }
+                }]
+            }
+        } 
+    });
+</script>
+
+<p>
+</p>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
-{% endblock %}
+{% endblock content %}

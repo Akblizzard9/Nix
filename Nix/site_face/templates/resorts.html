@@ -20,15 +20,12 @@
 </div>
 </header>
 
-{% for resort in resorts %}
-<table>
-    <tr>
-        <td><a href="{% url 'resort_detail' slug=resort.slug %}">{{ resort.resort_name }}</a></td>
-    </tr>
-</table>
 
 
-{% endfor %}
+    
+       <p>{% for resort in reports %}<a href="{% url 'resort_detail' slug=resort.slug  %}">{{ resort.resort_name }}{% endfor %}</a></p>
+
+
 
 {% endblock %}
 </body>

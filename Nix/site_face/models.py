@@ -13,6 +13,8 @@ class Reports(models.Model):
     top_mintemp = models.IntegerField()
     top_maxtemp = models.IntegerField()
     todays_date = models.DateTimeField(auto_now_add=True, )
+    resort_name = models.CharField(max_length=200, null=True, blank=True)
+    slug = models.SlugField(max_length=200, null = True)
     resort_id = models.ForeignKey(
         'Resorts', on_delete = models.CASCADE, to_field='id', unique = True)
 
@@ -24,6 +26,7 @@ class Resorts(models.Model):
     resort_name = models.CharField(max_length=200, unique = True)
     location = models.CharField(max_length=30)
     slug = models.SlugField(max_length=200, unique = True, null = True)
+    
 
     def save(self, *args, **kwargs):    
             super(Resorts, self).save(*args, **kwargs)

@@ -8,7 +8,7 @@ import urllib.request
 import json
 import datetime
 
-api_key = "f80f69a2dc2343fcbbe04557192904"
+api_key = ""
 
 conn = psycopg2.connect(
 	host= "localhost",
@@ -50,17 +50,19 @@ data = []
 '''this will assign key pairs to insert into table Reports'''
 for var in myresult:
 	resort_id = var['id']
+	resort_name = (var['resort_name'])
+	slug = var['slug']
 	weather = (snowfall_from(var['location']))
 	date = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d")
-	data.append({"resort_id" : resort_id, "date" : date, "snowfall" : weather["snowfall"], "bottom_mintemp" : weather["bottom_mintemp"], "bottom_maxtemp" : weather["bottom_maxtemp"],
+	data.append({"resort_id" : resort_id, "resort_name" : resort_name, "slug" : slug , "date" : date, "snowfall" : weather["snowfall"], "bottom_mintemp" : weather["bottom_mintemp"], "bottom_maxtemp" : weather["bottom_maxtemp"],
 	 "middle_mintemp" : weather["middle_mintemp"], "middle_maxtemp" : weather["middle_maxtemp"], "top_mintemp" : weather["top_mintemp"], "top_maxtemp" : weather["top_maxtemp"]})
 
 print (data)
 '''data inserted into table Reports'''
 for row in data:
 	query = (
-		f"INSERT INTO site_face_reports (resort_id_id, todays_date, snowfall, bottom_mintemp, bottom_maxtemp, mid_mintemp, mid_maxtemp, top_mintemp, top_maxtemp)\n"
-		f"VALUES ({row['resort_id']}, '{row['date']}', {row['snowfall']}, {row['bottom_mintemp']}, {row['bottom_maxtemp']}, {row['middle_mintemp']}, {row['middle_maxtemp']}, {row['top_mintemp']}, {row['top_maxtemp']})"
+		f"INSERT INTO site_face_reports (resort_id_id, resort_name, slug, todays_date, snowfall, bottom_mintemp, bottom_maxtemp, mid_mintemp, mid_maxtemp, top_mintemp, top_maxtemp)\n"
+		f"VALUES ({row['resort_id']}, '{row['resort_name']}' , '{row['slug']}' ,'{row['date']}', {row['snowfall']}, {row['bottom_mintemp']}, {row['bottom_maxtemp']}, {row['middle_mintemp']}, {row['middle_maxtemp']}, {row['top_mintemp']}, {row['top_maxtemp']})"
 	)
 	dict_cur.execute(query)
 	print(query)

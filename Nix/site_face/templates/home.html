@@ -1,7 +1,9 @@
 
 {% block content %}
 {% load static %}
-
+<head>
+        <link rel="icon"  href="{%  static 'site_face/favicon/myfavicon.png' %}" type="image/png">
+</head>
 <html> 
 <link rel='stylesheet' type="text/css" href="{% static 'site_face/style.css' %}">
 <body <img class='background-image' src="{% static 'site_face/images/stockmountains.jpg' %}"> 
@@ -17,26 +19,35 @@
 </ul>
 </div>
 </header>
-
-<div class="dailyhighsnow">
-    <table>{{ daily_top_snow }}
-        <tr>
+    <table><caption>Top 10 Coldest Resorts</caption>
+        <tr><div class="dailyhighcold"></div>
             <th>Resort</th>
             <th>Base Temperature</th>
         </tr>
-        {% for resort in resorts %}
-        {% for resort_snow in resort.daily_report %}
+        {% for info in top_ten_coldest%}
         <tr>
-            <td>{{ resort_snow.snowfall }}</td>
-            <td>°<sup>F</sup></td>
-            {% endfor %}
+            <td><a href="{% url 'resort_detail' slug=info.slug %}">{{ info.resort_name }}</a></td>
+            <td>{{ info.bottom_maxtemp }}°<sup>F</sup></td>
             {% endfor %}
         </tr>
         </tbody>
     </table>
 </div>
-<div>
-
+</div>
+</header>
+    <table><caption>Top 10 Highest Projected Snowfall</caption>
+        <tr><div class="dailyhighsnow"></div>
+            <th>Resort</th>
+            <th>Projected Snowfall</th>
+        </tr>
+        {% for info in top_ten_snow%}
+        <tr>
+            <td><a href="{% url 'resort_detail' slug=info.slug %}">{{ info.resort_name }}</a></td>
+            <td>{{ info.snowfall }}<sup>in</sup></td>
+            {% endfor %}
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 

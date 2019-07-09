@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin', admin.site.urls),
     path('', include('site_face.urls')),
     path('home', (home.as_view()), name = 'home'),
+    path('home/api/data', get_data, name='api-data'),
     path('resorts', (resorts.as_view()), name = 'resorts'),
     path('resort/<slug>', resort_detail.as_view(template_name = 'resort_detail.html'), name='resort_detail'),
     path('booking', (bookings.as_view()), name = 'booking'),
